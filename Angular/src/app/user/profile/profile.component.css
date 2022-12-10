@@ -1,0 +1,48 @@
+.card {
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+  max-width: 50%;
+  max-height: 120%;
+  position: relative;
+  margin: auto;
+  text-align: center;
+  top: 70px;
+}
+
+.title {
+  color: grey;
+  font-size: 30px;
+}
+
+
+
+p {
+  text-decoration: none;
+  font-size: 22px;
+  color: grey;;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+.details-img {
+  width: 70%;
+  height: 80%;
+}
+
+#action-buttons {
+  display: flex;
+  justify-content: center;
+  bottom: 30px;
+}
+
+#action-buttons a {
+  text-decoration: none;
+  margin: auto 50px;
+  font-size: 21px;
+  width: 110px;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  background: #5c9596;
+}

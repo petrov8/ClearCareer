@@ -1,0 +1,58 @@
+
+
+  <section id="user-profile-page" class="card">
+
+    <article>
+
+    <span style="white-space: pre"> </span>
+
+        <br>
+        
+        <h2 class="title">My Profile</h2>
+
+     
+
+            <div class="user-content">
+
+                <ng-template #withAvatar>
+                  <img src={{this.profile.picture_url}} class="details-img" >
+                </ng-template>
+              
+                <ng-template #noAvatar>
+                  <img src="../../../assets/default_profiler.jpeg" class="details-img">
+                </ng-template>
+
+                <ng-container *ngTemplateOutlet="this.profile.picture_url ? withAvatar : noAvatar"></ng-container>
+
+      
+                <p>Name: {{this.profile.full_name}}</p>
+
+                <p>Email: {{this.profile.email}}</p>
+
+                <p>Joined: {{this.profile.entry_date | date:'dd-MM-yyyy'}} </p>
+
+                <p>Role: {{this.profile.role}}</p>
+
+                <div id="action-buttons" class="container">
+                  <a [routerLink]="['/' + this.paths.editUser]" id="edit-btn" > Edit </a>
+                  <a [routerLink]="['/' + this.paths.deleteUser]" id="delete-btn"> Delete </a>
+    
+                </div> 
+
+  
+            </div>
+
+    </article>
+
+  
+
+
+
+
+                <!-- <p>Job Publications: </p> -->
+<!-- 
+                <div id="action-buttons" class="container">
+                  <a [routerLink]="['/  ]" id="edit-btn" > Edit </a>
+                  <a [routerLink]="['/' + this.paths.deleteUser]" id="delete-btn"> Delete </a>
+    
+                </div> -->

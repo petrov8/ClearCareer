@@ -1,0 +1,60 @@
+
+
+
+  <!-- Edit Profile (Only for Guest users) -->
+
+  <section id="register">
+
+    <div class="form">
+
+      <h2> Edit Profile Details </h2>
+
+      
+      <form [formGroup]="this.form" (ngSubmit)="onSubmit()" class="login-form" >
+
+        <!-- Full Name -->
+
+          <label class="error" *ngIf="f['fullName'] && f['fullName'].invalid && f['fullName'].touched">
+            Invalid input for first and last names.
+          </label>
+
+          <input
+          type="text"
+          name="fullName"
+          id="fullName"
+          placeholder="John Doe"  
+          formControlName="fullName"
+        />
+
+        <!-- Email -->
+
+          <label class="error" *ngIf="f['email'] && f['email'].invalid && f['email'].touched">
+            Invalid email format.
+          </label>
+
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="john@test.org"
+            formControlName="email"
+          />
+
+          <label><strong> Change Profile Picture (optional) </strong></label><br>
+
+          <input 
+          type="file"
+          id="image"
+          accept="image/*"
+          formControlName="image"
+          (change)="toBase64($event)"
+          />
+
+
+        <button [disabled]="!form.valid"> Update Profile </button>
+
+      </form>
+
+    </div>
+    
+  </section> 

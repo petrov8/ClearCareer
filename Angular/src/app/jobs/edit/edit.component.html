@@ -1,0 +1,62 @@
+
+    <!-- Create Page (Only for logged-in users) -->
+    <section id="create">
+        <div class="form">
+          <h2> Edit Job Offer </h2>
+          
+          <form [formGroup]="this.form" (ngSubmit)="onSubmit()" class="create-form">
+  
+            <input
+              type="text"
+              name="title"
+              id="title"
+              formControlName="title" 
+            />
+
+            <input
+              type="textarea"
+              id="category"
+              formControlName="category"
+            />
+
+            <br>
+
+            <textarea class="textarea"
+              type="textarea"
+              id="description"
+              formControlName="description"
+            ></textarea>
+
+            &nbsp; 
+  
+            <textarea class="textarea"
+              id="requirements"
+              formControlName="requirements"
+            ></textarea>
+            
+            &nbsp;&nbsp; 
+
+            <input
+              type="number"
+              id="salary"
+              formControlName="salary"
+            />
+
+            <br><label><strong> Edit Company Logo </strong></label><br><br>
+
+            <input 
+            type="file"
+            id="image"
+            accept="image/*"
+            formControlName="image"
+            (change)="toBase64($event)"
+           
+          />
+  
+            <button [disabled]="form.invalid"> Update Job </button>
+  
+          </form>
+        </div>
+      </section>
+
+      

@@ -1,0 +1,57 @@
+  
+<!-- Main content -->
+
+<section id="dashboard" >
+
+    <ng-container *ngTemplateOutlet="this.allJobs.length > 0 ? areJobsTemplate : noJobsTemplate " ></ng-container>
+    
+</section>
+  
+
+<!-- If there are published jobs -->
+
+<ng-template #areJobsTemplate>
+
+    <h2>Job Offers</h2>  
+
+    <div *ngFor="let job of this.allJobs">
+
+            <!-- Display a div with information about every post (if any)-->
+
+            <div class="offer">
+
+                <!-- Available logos are downloaded from AWS S3 - internet speed may have negative impact on rendering -->
+
+                <ng-template #ownLogo>
+                    <img src={{job.picture_url}} alt="company logo" />
+                </ng-template>
+
+                <ng-template #defaultLogo>
+                    <img src="./assets/example1.png" alt="example1" />
+                </ng-template>
+
+                <ng-container *ngTemplateOutlet="job.picture_url ? ownLogo : defaultLogo " ></ng-container>
+    
+                <p>
+                    <strong>Title: </strong><span class="title"> {{job.title}} </span>
+                </p>
+                    <p><strong>Salary:</strong><span class="salary"> ${{job.salary.toLocaleString()}} </span></p>
+                <a class="details-btn" [routerLink]="['/' + this.paths.showJob, job.id]">Details</a>
+            </div>
+
+    </div>
+
+</ng-template>
+
+
+<!-- If no pubslished jobs -->
+
+<ng-template #noJobsTemplate>
+
+    <h2>No offers yet.</h2>
+
+</ng-template>
+
+
+
+

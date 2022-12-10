@@ -1,0 +1,101 @@
+  <!-- Register Page (Only for Guest users) -->
+
+  <section id="register">
+
+    <div class="form">
+
+      <h2>Register</h2>
+
+      
+      <form [formGroup]="form" (ngSubmit)="onRegister()" class="login-form" >
+
+        <!-- Full Name -->
+
+          <label class="error" *ngIf="f['fullName'] && f['fullName'].invalid && f['fullName'].touched">
+            Invalid input for first and last names.
+          </label>
+
+          <input
+          type="text"
+          name="fullName"
+          id="fullName"
+          placeholder="John Doe"
+          formControlName="fullName"
+        />
+
+        <!-- Email -->
+
+          <label class="error" *ngIf="f['email'] && f['email'].invalid && f['email'].touched">
+            Invalid email format.
+          </label>
+
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="john@test.org"
+            formControlName="email"
+          />
+
+        <!-- Passwords  -->
+        
+
+          <label class="error" *ngIf="f['password'] && f['password'].invalid && f['password'].touched">
+            Invalid password format (8 to 30 long + at least = 1 x Upper Case & 1 x Digit & 1 x special char). 
+          </label>
+          
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="********"
+            formControlName="password"
+          />
+     
+          <label class="error" *ngIf="f['password2']?.touched && f['password2']?.invalid">
+            <label *ngIf="f['password2']?.errors?.['required']">Password confirmation is required</label>
+            <label *ngIf="f['password2']?.errors?.['confirmedValidator']"> Passwords must match.</label>
+          </label>
+
+          <input
+            type="password"
+            name="password2"
+            id="password2"
+            placeholder="********" 
+            formControlName="password2"
+          />
+
+
+
+        <select class="round" placeholder="Select Role" formControlName="role">
+          <option value="" disabled selected hidden>Select Role...</option>
+          <option value="Job Seeker">Job Seeker</option>
+          <option value="Recruiter">Recruiter</option>
+          <option value="Administrator">Administrator</option>
+        </select>
+        <br><br>
+
+        <label><strong> Upload Profile Picture (optional) </strong></label><br>
+
+        <input 
+        type="file"
+        id="image"
+        accept="image/*"
+        formControlName="image"
+        (change)="toBase64($event)"
+        />
+
+
+  
+
+        <button [disabled]="!form.valid"> Register </button>
+        <p class="message">Already registered? <a [routerLink]="this.paths.login">Login</a></p>
+
+      </form>
+
+    </div>
+    
+  </section>
+
+
+

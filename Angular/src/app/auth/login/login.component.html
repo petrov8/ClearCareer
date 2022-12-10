@@ -1,0 +1,42 @@
+  <!-- Login Page (Only for Guest users) -->
+  <section id="login">
+
+    <div class="form">
+
+      <h2> Login </h2>
+
+      <form class="login-form" [formGroup]="form" (ngSubmit)="onLogin()">
+
+          <label class="error" *ngIf="f['email'] && f['email'].invalid && f['email'].touched">
+            Invalid email format.
+          </label>
+
+          <input 
+          type="text" 
+          id="email" 
+          placeholder="email" 
+          name="email" 
+          formControlName="email"
+          />
+
+          <label class="error" *ngIf="f['password'] && f['password'].invalid && f['password'].touched">
+            Invalid password format.
+          </label>
+
+          <input 
+          type="password" 
+          id="password" 
+          placeholder="password" 
+          name="password"
+          formControlName="password" 
+          />
+          
+          <button [disabled]="!form.valid"> Login </button>
+
+          <p class="message">Not registered? <a [routerLink]="this.registerPath">Register</a></p>
+
+      </form>
+
+    </div>
+
+  </section>

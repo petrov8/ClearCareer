@@ -1,0 +1,44 @@
+<header>
+    <!-- Navigation -->
+    <a id="logo" routerLink="/"
+      ><img id="logo-img" src="./assets/logo.jpg" alt=""
+    /></a>
+
+    <nav >
+
+      <!-- Logged-in users -->
+
+      <div>
+        <a [routerLink]="paths.dashboard">Dashboard</a>
+      </div>
+
+      <ng-template #loggedInTemplate>
+        <div class="user">
+
+          <ng-container *ngIf="'canPost'">
+            <a [routerLink]="paths.newJob">New Job</a>
+          </ng-container>
+
+          <ng-container *ngIf="'isRecruiter'">
+            <a [routerLink]="paths.myJobs">My Jobs</a>
+          </ng-container>
+          
+          <a [routerLink]="paths.profile">Profile</a>
+          <a [routerLink]="paths.logout">Logout</a>
+        </div>
+      </ng-template>
+ 
+      <!-- Guest users -->
+      <ng-template #visitorTemplate>
+          <div class="guest">
+            <a [routerLink]="paths.login">Login</a>
+            <a [routerLink]="paths.register">Register</a>
+          </div>
+      </ng-template>
+
+
+      <ng-container *ngTemplateOutlet="(authService.isLoggenIn$ | async) ? loggedInTemplate : visitorTemplate"></ng-container>
+
+
+    </nav>
+  </header>
