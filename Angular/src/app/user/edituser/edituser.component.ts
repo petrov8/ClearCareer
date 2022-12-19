@@ -49,7 +49,6 @@ export class EdituserComponent implements OnInit, OnDestroy {
     ngOnInit(){
 
       this.subGet = this.userApi.getProfileUser()
-      .pipe(takeUntil(this.componentDestroyed$))
       .subscribe({
         next: (res) => Object.assign(this.profile, res),
         error: (err) => alert(err.error.message),
@@ -60,19 +59,15 @@ export class EdituserComponent implements OnInit, OnDestroy {
 
     onSubmit(){
 
+
       if (this.form.invalid) { return }
 
       let details = composeUserHttpBody(this.form, this.base64)
-
-      console.log(details)
   
-      this.subPut = this.userApi.editExistingUser(details)
-      .pipe(takeUntil(this.componentDestroyed$))
-      .subscribe({
-        next: () => this.router.navigate([this.paths.profile]),
-        error: (err) => alert(err.error.message),
-        complete: () => {},
-      })
+      this.userApi.editExistingUser(details)
+
+      this.router.navigate([this.paths.profile])
+
     }
 
 

@@ -2,7 +2,7 @@ import { UserProfileModel } from './../../_models/models';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { urlPaths } from './../../support/url.paths';
 import { UserApiService } from "../user.api.service"
-import { Subscription} from 'rxjs';
+import { Subject, Subscription, takeUntil} from 'rxjs';
 
 
 
@@ -15,6 +15,8 @@ import { Subscription} from 'rxjs';
 
 
 export class ProfileComponent implements OnInit, OnDestroy {
+  
+  componentDestroyed$: Subject<boolean> = new Subject() 
   paths = urlPaths
   sub: Subscription = new Subscription
 
@@ -23,7 +25,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {  
 
-    this.sub = this.userApi.getProfileUser().subscribe({
+    this.sub = this.userApi.getProfileUser()
+    .pipe(takeUntil(this.componentDestroyed$))
+    .subscribe({
       next: (res) => Object.assign(this.profile, res),
       error: (err) => console.log(err.error.message),
       complete: () => {}
@@ -33,7 +37,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe()
+
+    this.componentDestroyed$.next(true)
+    this.componentDestroyed$.complete()
+    
   }
 
 }

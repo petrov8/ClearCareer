@@ -44,7 +44,9 @@ export class UserApiService {
     deleteExistingUser() {
 
         return this.http.delete(`${environment.defaultURL}/${urlPaths.deleteUser}`, {headers: generateHttpHeaders()})
-
+        .pipe(tap(
+            (res) => res
+        ))
     }
 
 }
