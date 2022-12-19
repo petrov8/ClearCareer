@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
@@ -14,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
     NavComponent,
     MainComponent,
     FooterComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { FooterComponent } from './footer/footer.component';
     NavComponent,
     MainComponent,
     FooterComponent,
+    NotFoundComponent,
   ]
 })
 export class CoreModule { }

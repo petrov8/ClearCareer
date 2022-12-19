@@ -1,9 +1,11 @@
+import { AlertifyService } from './../../services/alertify-service';
 import { AuthService } from '../auth.api.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { urlPaths } from './../../support/url.paths';
 import { Router } from '@angular/router';
 import { passwordRegex } from 'src/app/support/validators';
+
 
 
 @Component({
@@ -18,9 +20,10 @@ export class LoginComponent {
   
   registerPath: string = `/${urlPaths.register}`
   dashbaordPath: string = `/${urlPaths.dashboard}`
+  errorMessage: string = ""
 
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private alertify: AlertifyService) {
   }
 
     form = this.fb.group({
@@ -32,17 +35,21 @@ export class LoginComponent {
       return this.form.controls
     }
 
+
+  
     onLogin() {
       
       if (this.form.invalid) {return}
 
-      const {email, password} = this.form.value
+      const {email, password} = this.form.value 
 
       this.authService
       .login(email!, password!)
       .subscribe({
-        next: () => {this.router.navigate([this.dashbaordPath])},
-        error: (err) => {console.log(err.error.message)},
+        next: () => {
+          this.alertify.onSuccess(`Welcome Back, ${email}!`)
+          this.router.navigate([this.dashbaordPath])
+        },
         complete: () => {}
       })  
     }

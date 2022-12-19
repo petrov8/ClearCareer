@@ -20,6 +20,7 @@ import { convertImageToBase64 } from 'src/app/support/common';
 export class EdituserComponent implements OnInit, OnDestroy {
 
   paths = urlPaths
+  errorMessage: string = ""
   base64: any 
   subGet: Subscription = new Subscription
   subPut: Subscription = new Subscription
@@ -63,10 +64,11 @@ export class EdituserComponent implements OnInit, OnDestroy {
       if (this.form.invalid) { return }
 
       let details = composeUserHttpBody(this.form, this.base64)
-  
-      this.userApi.editExistingUser(details)
 
-      this.router.navigate([this.paths.profile])
+      this.subPut = this.userApi.editExistingUser(details).subscribe({
+        next: () => this.router.navigate([this.paths.profile]),
+        error: (err) => this.errorMessage = err.error.message,
+      })
 
     }
 

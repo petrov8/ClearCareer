@@ -1,3 +1,5 @@
+import { AlertifyService } from './services/alertify-service';
+
 import { RecruiterModule } from './recruiter/recruiter.module';
 
 import { JobsModule } from './jobs/jobs.module';
@@ -11,8 +13,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { appInterceptorProvider } from './app.interceptor';
+import { HttpErrorInterceptorService } from './services/http-error-interceptor.service';
+
+
 
 
 
@@ -24,19 +29,26 @@ import { appInterceptorProvider } from './app.interceptor';
 
   imports: [
     BrowserModule,
-    AppRoutingModule,
 
     AuthModule,
     CoreModule,
     JobsModule,
     UserModule,
     RecruiterModule,
-
+    
     HttpClientModule, 
-
+    AppRoutingModule,
   ],
 
-  providers: [appInterceptorProvider],
+  providers: [
+    appInterceptorProvider, 
+    AlertifyService, 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

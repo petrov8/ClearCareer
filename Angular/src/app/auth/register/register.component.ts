@@ -1,6 +1,8 @@
+import { AlertifyService } from './../../services/alertify-service';
 import { Subscription } from 'rxjs';
 import { composeUserHttpBody } from 'src/app/support/userMgmt';
 import { Router } from '@angular/router';
+
 
 
 import { AuthService } from '../auth.api.service';
@@ -19,6 +21,7 @@ import { convertImageToBase64 } from 'src/app/support/common';
 
 
 export class RegisterComponent {
+  errorMessage: string = ""
   subPost: Subscription = new Subscription
   paths = urlPaths
   base64: any 
@@ -26,7 +29,8 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder, 
     private authApi: AuthService,  
-    private router: Router
+    private router: Router,
+    private alertify: AlertifyService
     ){}
 
     form = this.fb.group({
@@ -52,8 +56,11 @@ export class RegisterComponent {
 
       this.subPost = this.authApi.register(details)
       .subscribe({
-        next: () => {this.router.navigate([this.paths.dashboard])},
-        error: (err) => {alert(err.error.message)},
+        next: () => {
+          this.alertify.onSuccess("Welcome to Clear Careers!")
+          this.router.navigate([this.paths.dashboard]
+            )},
+        error: () => {},
         complete: () => {}
       })  
       }

@@ -2,6 +2,12 @@
     <!-- Create Page (Only for logged-in users) -->
     <section id="create">
         <div class="form">
+
+          <label class="error" *ngIf="this.errorMessage">
+            {{this.errorMessage}}
+          </label>
+
+          
           <h2> New Job Offer </h2>
           
           <form [formGroup]="form" (ngSubmit)="onSubmit()"  class="create-form">

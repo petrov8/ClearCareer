@@ -17,6 +17,8 @@ import { convertImageToBase64 } from 'src/app/support/common';
 
 export class NewComponent {
 
+  errorMessage: string = ""
+
   paths = urlPaths
 
   subPost: Subscription = new Subscription
@@ -44,7 +46,7 @@ export class NewComponent {
     this.subPost = this.apiService.postNewJob(details)
     .subscribe({
       next: () => this.router.navigate([this.paths.dashboard]),
-      error: (err) => alert(err.error.message),
+      error: (err) => this.errorMessage=err.error.message,
       complete: () => {},
     })
   }
@@ -56,8 +58,6 @@ export class NewComponent {
       this.base64 = await convertImageToBase64(event)
 
   }
-
-
 
 
 }

@@ -39,6 +39,7 @@ button:hover, a:hover {
 #action-buttons a {
   text-decoration: none;
   margin: auto 50px;
+  margin-bottom: 1cm;
   font-size: 21px;
   width: 110px;
   padding: 10px;
