@@ -7,7 +7,7 @@ from models.base import InputModel
 class JobModel(InputModel):
     __tablename__ = "job"
 
-    title = db.Column(db.String(30), nullable=False)
+    title = db.Column(db.String(30), nullable=False, unique=True)
     category = db.Column(db.String(30), nullable=False)
     description = db.Column(db.Text, nullable=False)
     requirements = db.Column(db.Text, nullable=False)

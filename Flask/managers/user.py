@@ -101,5 +101,5 @@ class UserManagement:
             new_email = EmailsModel(**{"email": email_data})
             db_commit(new_email)
         except Exception:
-            raise Conflict("Email already in use.")
+            raise Conflict("Email is already taken.")
 

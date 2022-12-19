@@ -1,11 +1,11 @@
 import os
 
-from werkzeug.exceptions import FailedDependency, BadRequest
+from sqlalchemy.exc import IntegrityError
+from werkzeug.exceptions import FailedDependency, BadRequest, Conflict
 
 from managers.s3 import delete_pic_from_s3, add_pic_to_s3
 from models.job import JobModel
 from schemas.outgoing.job import NewJobSchemaResponse, DetailsJobResponse
-from services.aws_s3 import S3Service
 from utils.decors import check_ownership_decorator
 from utils.support import return_current_user, return_current_job, db_commit, db_delete
 
@@ -21,14 +21,18 @@ class JobManagement:
             new_job = JobModel(**job_info)
             db_commit(new_job)
             return NewJobSchemaResponse().dump(new_job)
-        except Exception:
-            S3Service().delete_picture(job_info["picture_name"])
+        except IntegrityError as ex:
+            delete_pic_from_s3(job_info["picture_name"])
+            raise Conflict("Job title already exists.")
+        except Exception as ex:
+            delete_pic_from_s3(job_info["picture_name"])
             raise FailedDependency(
                 "Picture upload failed. Job entry was not recorded in database."
             )
         finally:
             os.remove(path)
             return
+
 
     @staticmethod
     def show_all_jobs():
