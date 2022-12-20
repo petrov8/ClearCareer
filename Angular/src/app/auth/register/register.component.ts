@@ -1,4 +1,4 @@
-import { AlertifyService } from './../../services/alertify-service';
+import { AlertifyService } from '../../../services/alertify-service';
 import { Subscription } from 'rxjs';
 import { composeUserHttpBody } from 'src/app/support/userMgmt';
 import { Router } from '@angular/router';

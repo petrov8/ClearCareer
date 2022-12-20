@@ -1,4 +1,5 @@
-import { AlertifyService } from './services/alertify-service';
+import { SharedModule } from './shared/shared.module';
+import { AlertifyService } from '../services/alertify-service';
 
 import { RecruiterModule } from './recruiter/recruiter.module';
 
@@ -15,7 +16,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { appInterceptorProvider } from './app.interceptor';
-import { HttpErrorInterceptorService } from './services/http-error-interceptor.service';
+import { HttpErrorInterceptorService } from 'src/Interceptors/http-error-interceptor.service';
+import { LoadingSpinnerInteceptor } from 'src/Interceptors/http-spinner.interceptor';
+
+
 
 
 
@@ -35,6 +39,7 @@ import { HttpErrorInterceptorService } from './services/http-error-interceptor.s
     JobsModule,
     UserModule,
     RecruiterModule,
+    SharedModule, 
     
     HttpClientModule, 
     AppRoutingModule,
@@ -46,6 +51,11 @@ import { HttpErrorInterceptorService } from './services/http-error-interceptor.s
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingSpinnerInteceptor,
       multi: true
     }
   ],

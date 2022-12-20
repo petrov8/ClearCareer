@@ -1,4 +1,4 @@
-import { AlertifyService } from './../../services/alertify-service';
+import { AlertifyService } from '../../../services/alertify-service';
 import { AuthService } from '../auth.api.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';

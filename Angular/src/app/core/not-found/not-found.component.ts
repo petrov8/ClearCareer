@@ -1,6 +1,6 @@
 import { urlPaths } from 'src/app/support/url.paths';
 import { Component, OnInit } from '@angular/core';
-
+  
 
 @Component({
   selector: 'app-not-found',
