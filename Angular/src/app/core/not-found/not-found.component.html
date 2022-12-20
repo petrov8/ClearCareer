@@ -1,10 +1,27 @@
+ <!-- Details page -->
+ <section id="details">
+
+    <div id="details-wrapper">
+
+        <img id="details-img" src="../../../assets/page-doesn't-exist.gif" alt="example1" />
+
+        <div class="center">
+
+        
+            <h1> Ooops .... this resource doens't exist :) </h1>
 
 
-<section *ngIf="this.page_not_found">
+        </div>
 
-    <div>
-        <h1>404 Error</h1>
-        <h1>Uhhh .... this page doens't exist ... </h1>
+      <!--Delete of go back to Dashboard-->
+      <div id="action-buttons">
+
+        <a href="" id="action-buttons" [routerLink]="['/' + this.paths.home]"> Home </a>
+        
+      </div>
+
+
     </div>
 
-</section>
+
+  </section>
