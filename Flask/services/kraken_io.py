@@ -36,6 +36,6 @@ class KrakenIoService:
     def avatar_dimensions():
         data = {
             "wait": True,
-            "resize": {"width": 640, "height": 480, "strategy": "portrait"},
+            "resize": {"width": 180, "height": 180, "strategy": "portrait"},
         }
         return data

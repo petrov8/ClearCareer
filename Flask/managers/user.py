@@ -18,7 +18,8 @@ class UserManagement:
     @staticmethod
     def register_user(registration_data):
 
-        UserManagement.add_new_email(registration_data["email"])
+        email = registration_data["email"]
+        UserManagement.add_new_email(email)
         registration_data["password"] = generate_password_hash(
             registration_data["password"]
         )
@@ -29,6 +30,8 @@ class UserManagement:
                 return UserManagement.commit_new_user(registration_data)
             except Exception:
                 delete_pic_from_s3(registration_data["picture_name"])
+                UserManagement.remove_existing_email(email)
+                os.remove(path)
                 raise InternalServerError("Registration failed.")
             finally:
                 os.remove(path)
@@ -42,7 +45,7 @@ class UserManagement:
         registration_data.pop("profile_type")
         new_user = user_model(**registration_data)
         db_commit(new_user)
-        return AuthManager.create_token(new_user), new_user.id, new_user.role.name
+        return AuthManager.create_token(new_user), new_user.id, new_user.role.name, new_user.email
 
     @staticmethod
     def login_user(login_data):
@@ -55,7 +58,7 @@ class UserManagement:
                     raise NotFound("User does not exist.")
 
         if check_password_hash(user.password, login_data["password"]):
-            return AuthManager.create_token(user), user.id, user.role.name
+            return AuthManager.create_token(user), user.id, user.role.name, user.email
         raise BadRequest("Wrong password.")
 
     @staticmethod
@@ -79,6 +82,7 @@ class UserManagement:
             if "picture" in to_edit.keys():
                 if user.picture_name is not None:
                     delete_pic_from_s3(user.picture_name)
+                    user.picture_url = None
                 data, path = add_pic_to_s3(to_edit)
                 user.picture_url = data["picture_url"]
                 user.picture_name = data["picture_name"]
@@ -88,7 +92,7 @@ class UserManagement:
         finally:
             if user.email != to_edit["email"]:
                 UserManagement.add_new_email(to_edit["email"])
-                EmailsModel.query.filter_by(email=user.email).delete()
+                UserManagement.remove_existing_email(user.email)
                 user.email = to_edit["email"]
             user.full_name = to_edit["full_name"]
 
@@ -102,4 +106,8 @@ class UserManagement:
             db_commit(new_email)
         except Exception:
             raise Conflict("Email is already taken.")
+
+    @staticmethod
+    def remove_existing_email(email):
+        EmailsModel.query.filter_by(email=email).delete()
 

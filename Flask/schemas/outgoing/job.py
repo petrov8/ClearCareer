@@ -13,4 +13,7 @@ class DetailsJobResponse(NewJobSchemaResponse):
     picture_url = fields.Str(required=True)
     description = fields.Str(required=True)
     requirements = fields.Str(required=True)
+    recruiter_email = fields.Str(required=True)
     recruiter_id = fields.Integer(required=True)
+
+

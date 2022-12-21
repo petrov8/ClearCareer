@@ -13,11 +13,12 @@ class RegisterUserResource(Resource):
     @schema_validator(RegisterSchema)
     def post():
         data = request.get_json()
-        token, user_id, user_role = UserManagement.register_user(data)
+        token, user_id, user_role, user_email = UserManagement.register_user(data)
         return {
             "token": token,
             "_id": user_id,
             "_role": user_role,
+            "email": user_email
         }, status.HTTP_201_CREATED
 
 
@@ -26,11 +27,12 @@ class LoginUserResource(Resource):
     @schema_validator(LoginSchema)
     def post():
         data = request.get_json()
-        token, user_id, user_role = UserManagement.login_user(data)
+        token, user_id, user_role, user_email = UserManagement.login_user(data)
         return {
             "token": token,
             "_id": user_id,
             "_role": user_role,
+            "_email": user_email
         }, status.HTTP_202_ACCEPTED
 
 
