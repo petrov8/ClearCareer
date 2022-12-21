@@ -27,21 +27,6 @@ export function populateToken(){
 }
 
 
-export function canPostJobs(){
-
-    let status = returnLocalStorageItem("_role") !== "visitor" ? true : false 
-    return status 
-    
-}
-
-
-export function isRecruiter(){
-
-    let status = returnLocalStorageItem("role") === "recruiter" ? true : false 
-    return status 
-}
-
-
 export function composeUserHttpBody(form: FormGroup, base64: string){
 
     var body: StringObj = {

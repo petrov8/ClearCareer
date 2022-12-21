@@ -1,7 +1,9 @@
+
+import { NavBarService } from '../../../services/nav-bar-dynamic.service';
 import { AuthService } from '../../auth/auth.api.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { urlPaths } from './../../support/url.paths';
-import { canPostJobs, isRecruiter } from './../../support/userMgmt';
+
 
 @Component({
   selector: 'app-nav',
@@ -12,14 +14,17 @@ import { canPostJobs, isRecruiter } from './../../support/userMgmt';
 
 export class NavComponent {
   paths = urlPaths
-  canPost = canPostJobs()
-  isRecruiter = isRecruiter()
 
 
-  constructor (public authService: AuthService) {}
+  constructor (public authService: AuthService, private nav: NavBarService) {}
 
-  
+  get showNewJob(){
+    return this.nav.canEditPosts()
+  }
 
+  get isRecuiter(){
+    return this.nav.isRecruiter()
 
-  
+  }
+
 }

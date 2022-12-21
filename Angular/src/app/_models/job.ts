@@ -23,6 +23,8 @@ export class JobNewModel {
 export class JobExistingModel extends JobNewModel {
 
     id: number = 0
+    recruiter_id: number = 0
+    recruiter_email: string = ""
 }
 
 

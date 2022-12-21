@@ -12,9 +12,15 @@
 
 <ng-template #areJobsTemplate>
 
+
     <h2>Job Offers</h2>  
 
-    <div *ngFor="let job of this.allJobs">
+    <div *ngFor="let job of this.allJobs | paginate: 
+        { 
+            itemsPerPage: jobsPerPage,
+            currentPage: p
+        
+        }">
 
             <!-- Display a div with information about every post (if any)-->
 
@@ -38,9 +44,23 @@
                     <p><strong>Salary:</strong><span class="salary"> ${{job.salary.toLocaleString()}} </span></p>
                 <a class="details-btn" [routerLink]="['/' + this.paths.showJob, job.id]">Details</a>
             </div>
-
     </div>
+    <div class="paginator">
+        <pagination-controls 
+            previousLabel="Prev"
+            nextLabel="Next"
+            (pageChange)="p = $event"
+            
+        >
+        </pagination-controls>
+    </div>
+    <!-- <select (change)="changeTableSize($event)">
+        <option *ngFor="let size of this.jobsPerPageOptions">
+            {{size}}
+        </option>
+    </select> -->
 
+    
 </ng-template>
 
 
@@ -48,10 +68,7 @@
 
 <ng-template #noJobsTemplate>
 
-    <h2>No offers yet.</h2>
+    <h2>No job offers :( .</h2>
 
 </ng-template>
-
-
-
 

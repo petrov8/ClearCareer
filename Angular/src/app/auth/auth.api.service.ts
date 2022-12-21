@@ -51,7 +51,8 @@ export class AuthService {
             email,
             password,
         })
-        .pipe(tap(
+        .pipe(
+            tap(
             (res) => this.setLocalStorage(res)
             ))
         }

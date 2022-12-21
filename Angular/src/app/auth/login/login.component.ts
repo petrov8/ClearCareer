@@ -1,10 +1,11 @@
 import { AlertifyService } from '../../../services/alertify-service';
 import { AuthService } from '../auth.api.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { urlPaths } from './../../support/url.paths';
 import { Router } from '@angular/router';
 import { passwordRegex } from 'src/app/support/validators';
+import { NavComponent } from 'src/app/core/nav/nav.component';
 
 
 
@@ -36,7 +37,6 @@ export class LoginComponent {
     }
 
 
-  
     onLogin() {
       
       if (this.form.invalid) {return}
@@ -53,4 +53,5 @@ export class LoginComponent {
         complete: () => {}
       })  
     }
+    
 }

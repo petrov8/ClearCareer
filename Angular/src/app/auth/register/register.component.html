@@ -75,7 +75,7 @@
         </select>
         <br><br>
 
-        <label><strong> Upload Profile Picture (optional) </strong></label><br>
+        <label>Upload Profile Picture (optional) </label><br>
 
         <input 
         type="file"
@@ -85,8 +85,6 @@
         (change)="toBase64($event)"
         />
 
-
-  
 
         <button [disabled]="!form.valid"> Register </button>
         <p class="message">Already registered? <a [routerLink]="this.paths.login">Login</a></p>

@@ -11,6 +11,26 @@ const form = {
 
 }
 
+export const jobCategorySelection: Array<string> = [
+    '......',
+    'Architecture', 
+    'Back End', 
+    'Cloud', 
+    'Customer Support', 
+    'DevOps', 
+    'Enterprise', 
+    'Front End', 
+    'Full Stack', 
+    'HR', 
+    'Management', 
+    'Mobile', 
+    'Networking', 
+    'Security', 
+    'Senior Management', 
+    'Technical Support', 
+    'UI-UX'
+]
+
 
 @Injectable({
     providedIn: "root"

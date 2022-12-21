@@ -4,7 +4,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { urlPaths } from "../../support/url.paths"
 
 import { Subject } from "rxjs"
-import { JobPreview } from 'src/app/_typesCustom/job';
 
 
 @Component({
@@ -16,32 +15,47 @@ import { JobPreview } from 'src/app/_typesCustom/job';
 
 export class DashboardComponent implements OnInit, OnDestroy {
 
+  paths = urlPaths
+
+
   componentDestroyed$: Subject<boolean> = new Subject() 
   sub: Subscription = new Subscription
-  allJobs: JobPreview[] = []
+  allJobs: any[] = []
 
-  paths = urlPaths
+  // pagination 
+
+  p: number = 1 
+  jobsPerPage: number = 4
+  jobsPerPageOptions: Array<number> = [4, 6, 8, 10, 12]
+
 
   constructor(private apiService: JobsApiService){}
 
 
   ngOnInit(): void {
 
-    this.sub = this.apiService.getAllJobs()
-    .pipe(takeUntil(this.componentDestroyed$))
-    .subscribe({
-      next: (res: {}) => Object.assign(this.allJobs, res),
-      error: (err) => console.log(err),
-      complete: () => {}
-    })
+    this.fetchAllJobs()
 
   }
 
+  
   ngOnDestroy(): void {
 
     this.componentDestroyed$.next(true)
     this.componentDestroyed$.complete()
     
   }
+
+
+  fetchAllJobs(): void {
+
+    this.sub = this.apiService.getAllJobs()
+    .pipe(takeUntil(this.componentDestroyed$))
+    .subscribe((res: {}) => Object.assign(this.allJobs, res))
+
+  }
+
+
+
 
 }

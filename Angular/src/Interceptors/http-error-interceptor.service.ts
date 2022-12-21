@@ -12,6 +12,7 @@ import { GlobalErrorService } from 'src/services/http-error.service';
 @Injectable({
     providedIn: "root"
 })
+
 export class HttpErrorInterceptorService implements HttpInterceptor {
 
     constructor(private alertify: AlertifyService, private errorService: GlobalErrorService){}

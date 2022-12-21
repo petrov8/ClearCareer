@@ -49,15 +49,34 @@
         </div>
       </div>
 
-      <p>Applications: <strong id="applications">1</strong></p>
+      <!-- <p>Applications: <strong id="applications">1</strong></p> -->
 
       <!--Edit and Delete are only for creator-->
-      <div id="action-buttons">
-        <a id="edit-btn" [routerLink]="['/' + this.paths.editJob, this.currentJob.id]">Edit</a>
-        <a id="delete-btn"[routerLink]="['/' + this.paths.deleteJob, this.currentJob.id]">Delete</a>
 
-        <!--Bonus - Only for logged-in users ( not authors )-->
-        <a href="" id="apply-btn">Apply</a>
-      </div>
+
+      <ng-template #canEdit>
+
+        <div id="action-buttons">
+          <a id="edit-btn" [routerLink]="['/' + this.paths.editJob, this.currentJob.id]">Edit</a>
+          <a id="delete-btn"[routerLink]="['/' + this.paths.deleteJob, this.currentJob.id]">Delete</a>
+        </div>
+
+      </ng-template>
+
+
+      <ng-template #canOnlyView>
+
+        <div id="action-buttons" *ngIf='isJobSeeker'>
+          <a href="" id="apply-btn">Apply</a> 
+        </div>
+
+      </ng-template>
+
+
+      <ng-container *ngTemplateOutlet=" isOwner || isAdmin ?  canEdit : canOnlyView "></ng-container>
+
+
     </div>
   </section>
+
+  

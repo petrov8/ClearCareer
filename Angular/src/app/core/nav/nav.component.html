@@ -1,44 +1,59 @@
 <header>
-    <!-- Navigation -->
-    <a id="logo" routerLink="/"
-      ><img id="logo-img" src="./assets/logo.jpg" alt=""
-    /></a>
+  <!-- Navigation -->
+  <a id="logo" routerLink="/"
+    ><img id="logo-img" src="./assets/logo.jpg" alt=""
+  /></a>
 
-    <nav >
+  <nav >
 
-      <!-- Logged-in users -->
+    <ng-container *ngTemplateOutlet="(authService.isLoggenIn$ | async) ? loggedInTemplate : visitorTemplate"></ng-container>
 
-      <div>
-        <a [routerLink]="paths.dashboard">Dashboard</a>
+  </nav>
+</header>
+
+
+<ng-template #recruiterTemplate>
+
+  <div class="user">
+
+    <a [routerLink]="paths.profile">Profile</a>
+    <a [routerLink]="paths.newJob">New Job</a>
+    <a [routerLink]="paths.myJobs">My Jobs</a>
+
+  </div>
+
+</ng-template>
+
+
+<ng-template #otherUsersTemplate>
+
+  <div class="user">
+
+    <a [routerLink]="paths.profile">Profile</a>
+
+  </div>
+
+</ng-template>
+
+
+<!-- Logged-in users -->
+<ng-template #loggedInTemplate>
+
+  <div>
+    <a [routerLink]="paths.dashboard">Dashboard</a>
+  </div>
+
+  <ng-container *ngTemplateOutlet="isRecuiter ? recruiterTemplate : otherUsersTemplate"></ng-container>
+  
+  <a [routerLink]="paths.logout">Logout</a>
+
+</ng-template>
+
+
+    <!-- Guest users -->
+    <ng-template #visitorTemplate>
+      <div class="guest">
+        <a [routerLink]="paths.login">Login</a>
+        <a [routerLink]="paths.register">Register</a>
       </div>
-
-      <ng-template #loggedInTemplate>
-        <div class="user">
-
-          <ng-container *ngIf="'canPost'">
-            <a [routerLink]="paths.newJob">New Job</a>
-          </ng-container>
-
-          <ng-container *ngIf="'isRecruiter'">
-            <a [routerLink]="paths.myJobs">My Jobs</a>
-          </ng-container>
-          
-          <a [routerLink]="paths.profile">Profile</a>
-          <a [routerLink]="paths.logout">Logout</a>
-        </div>
-      </ng-template>
- 
-      <!-- Guest users -->
-      <ng-template #visitorTemplate>
-          <div class="guest">
-            <a [routerLink]="paths.login">Login</a>
-            <a [routerLink]="paths.register">Register</a>
-          </div>
-      </ng-template>
-
-
-      <ng-container *ngTemplateOutlet="(authService.isLoggenIn$ | async) ? loggedInTemplate : visitorTemplate"></ng-container>
-
-
-    </nav>
-  </header>
+  </ng-template>

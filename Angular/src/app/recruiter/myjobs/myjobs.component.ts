@@ -7,13 +7,19 @@ import { JobPreview } from 'src/app/_typesCustom/job';
 
 @Component({
   selector: 'app-myjobs',
-  templateUrl: '../../jobs/dashboard/dashboard.component.html',
-  styleUrls: ['../../jobs/dashboard/dashboard.component.css']
+templateUrl: '../../jobs/dashboard/dashboard.component.html',
+styleUrls: ['../../jobs/dashboard/dashboard.component.css']
 })
 
 
 
 export class MyjobsComponent implements OnInit, OnDestroy {
+
+  // pagination 
+
+  p: number = 1 
+  jobsPerPage: number = 4
+  jobsPerPageOptions: Array<number> = [4, 6, 8, 10, 12]
 
   componentDestroyed$: Subject<boolean> = new Subject() 
   sub: Subscription = new Subscription

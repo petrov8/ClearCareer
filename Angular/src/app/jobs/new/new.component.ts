@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 import { urlPaths } from 'src/app/support/url.paths';
 import { composeJobHttpBody } from 'src/app/support/jobMgmt';
 import { convertImageToBase64 } from 'src/app/support/common';
+import { jobCategorySelection } from 'src/app/support/forms';
 
 
 @Component({
@@ -18,11 +19,13 @@ import { convertImageToBase64 } from 'src/app/support/common';
 export class NewComponent {
 
   errorMessage: string = ""
+  jobCategories: Array<string> = jobCategorySelection
 
   paths = urlPaths
 
   subPost: Subscription = new Subscription
   base64: any
+
 
 
   constructor(private fb: FormBuilder, private apiService: JobsApiService, private router: Router){}
