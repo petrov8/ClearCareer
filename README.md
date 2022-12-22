@@ -24,7 +24,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/petrov8/CareersWebsite">
-    <img src="Angular/src/assets/logo.jpg" width="620" height="540"alt="accessibility text">
+    <img src="Angular/src/assets/logo.jpg" width="168" height="168"alt="accessibility text">
   </a>
 
 <h3 align="center">Careers Website</h3>
@@ -149,7 +149,7 @@ At runtime, the following error may appear:
 
 
   <p align="center">
-    <img src="Angular/src/assets/flask_error.png" width="540" height="400"alt="accessibility text">
+    <img src="Angular/src/assets/flask_error.png" width="350" alt="accessibility text">
   </p>
     
 
@@ -168,13 +168,13 @@ resolve the issue by navigating to "./services/kraken_io.py" and "ALT+left click
   change from:
 
   <p align="center">
-    <img src="Angular/src/assets/flask_error_2.png" width="540" height="400"alt="accessibility text">
+    <img src="Angular/src/assets/flask_error_2.png" width="350" alt="accessibility text">
   </p>
 
   to 
 
   <p align="center">
-    <img src="Angular/src/assets/flask_error_3.png" width="540" height="400"alt="accessibility text">
+    <img src="Angular/src/assets/flask_error_3.png" width="350" alt="accessibility text">
   </p>
 
     ![Alt text](assets/flask_error_3.png)
