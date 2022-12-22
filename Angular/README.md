@@ -18,35 +18,26 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
 
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/petrov8/CareersWebsite">
-    <img src="./src/app/assets/logo.jpg" alt="Logo" width="80" height="80">
+    <img src=![Alt text](src/assets/logo.jpg)" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">Careers Website</h3>
 
   <p align="center">
     project_description
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/petrov8/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/petrov8/issues">Request Feature</a>
   </p>
 </div>
 
@@ -71,10 +62,8 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -83,9 +72,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is an online exchange where recruiters can publish job advertisements and meet potential job candidates.
+This is an online exchange where recruiters can publish and manage job advertisements.
 
-The recruitment process is overseen by administrators / master users.
+Job seekers can browse through available offers, review details and apply (to be implemented). 
+
+The recruitment process is overseen by administrators.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -94,9 +85,14 @@ The recruitment process is overseen by administrators / master users.
 
 ### Built With
 
-* [![Flask][flask.io][Flask-url]]
-* [![Angular][Angular.io]][Angular-url]
+* Client Side - Angular https://angular.io
+* Server Side - Flask https://flask.palletsprojects.com/en/2.2.x/
 
+
+### Services:
+
+* Image Resizing - Kraken.io https://kraken.io
+* Image Storage - AWS S3 https://aws.amazon.com/s3/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -105,8 +101,6 @@ The recruitment process is overseen by administrators / master users.
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
@@ -153,8 +147,12 @@ In case Angular fails to install automatically, run the following command:
 
 At runtime, the following error may appear: 
 
+<br>
 
-![Error Message](src/assets/flask_error.png)
+
+    ![Error Message](src/assets/flask_error.png)
+
+<br>
 
 
 resolve the issue by navigating to "./services/kraken_io.py" and "ALT+left click" on "Client" from "from krakenio import Client" (or CTL + left click on the error) and chsnge:
@@ -166,15 +164,16 @@ resolve the issue by navigating to "./services/kraken_io.py" and "ALT+left click
     except ImportError:
         from io import BytesIO as cStringIO
    ```
+from:
 
-![Problem Root](src/assets/flask_error_2.png)
+    ![Problem Root](src/assets/flask_error_2.png)
 
 to 
 
-![Solution](src/assets/flask_error_3.png)
+    ![Solution](src/assets/flask_error_3.png)
 
 
-3. Re-run the server
+3. Re-run "main.py"
 
 
 
@@ -187,7 +186,8 @@ to
 
 Users may choose from the following profile options:
 
-USER PROFILES:
+
+Profile Options:
 
     "Guest" (no login required):
     - Can access job listings with no further details.
@@ -210,6 +210,36 @@ USER PROFILES:
     - Can delete any job listing.
 
 
+Functionalities:
+
+    "Dashboard": 
+    - Shows all basic info for available job postings.
+
+    "Details": 
+    - Shows further details about a specific job posting. 
+
+    "My-profile": 
+    - Shows personal details of logged-in users. 
+    - Profiles can be edited by their owners or by admins.
+    - In case user hasn't uploaded a profile picture, a default one will be rendered. 
+
+    "Edit Job": 
+    - Allows recruiters to edit their job postings. 
+    - Listings can be edited by their owners or by admins.
+
+    "Delete": 
+    - Allows recruiters to delete their own job postings. 
+    - Listings can be deleted by their owners or by admins.
+
+
+Features:
+
+    - Image uploads are first converted to base64 format and then then passed by the service side onto an external image resizing API.
+    - Different resizing profiles are applied to different use-cases (profile or job image upload)
+    - Once the image has been succesfully resized it is then uploaded and stored onto a remote cloud service.
+    - A corresponding URL is stored in the database and passed onto the "Client" upon request. 
+    - This process helps reduce strain on the server side, standardize image sizing and reduce storage requirements. 
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -218,30 +248,15 @@ USER PROFILES:
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [1] Delete Profile - Users or Admins can delete profiles (currently not available on server side)
+    - [1.1] - Terminate Profile - Administrators have permissions to delete user/recruiter profiles. 
+- [2] Apply for jobs - Logged in job seekers can apply for jobs. 
+- [3] My Jobs - populates a dashboard of all jobs a job seekers has applied for. 
+- [4] Application Count - Recruiters can see total applications for a each of their published jobs.
+- [5] Applicant Details - Recruiters can see applicant profiles. 
+
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -255,27 +270,14 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Angel Petrov - a.petrov089@outlook.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
+Project Link: [https://github.com/petrov8](https://github.com/petrov8/CareersWebsite)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
