@@ -147,12 +147,10 @@ In case Angular fails to install automatically, run the following command:
 
 At runtime, the following error may appear: 
 
-<br>
 
-      ![Alt text](Angular/src/assets/flask_error.png)
+  ![Alt text](assets/flask_error.png)
     
 
-<br>
 
 
 resolve the issue by navigating to "./services/kraken_io.py" and "ALT+left click" on "Client" from "from krakenio import Client" (or CTL + left click on the error) and chsnge:
@@ -167,11 +165,11 @@ resolve the issue by navigating to "./services/kraken_io.py" and "ALT+left click
 
   change from:
 
-      ![Alt text](assets/flask_error_2.png)
+    ![Alt text](assets/flask_error_2.png)
 
   to 
 
-      ![Alt text](flask_error_3.png)
+    ![Alt text](flask_error_3.png)
 
 
 3. Re-run "main.py"
