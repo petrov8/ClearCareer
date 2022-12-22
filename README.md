@@ -164,14 +164,14 @@ resolve the issue by navigating to "./services/kraken_io.py" and "ALT+left click
     except ImportError:
         from io import BytesIO as cStringIO
    ```
-   
+
   change from:
 
-      ![Alt text](Angular/src/assets/flask_error_2.png)
+      ![Alt text](assets/flask_error_2.png)
 
   to 
 
-      ![Alt text](Angular/src/assets/flask_error_3.png)
+      ![Alt text](flask_error_3.png)
 
 
 3. Re-run "main.py"
