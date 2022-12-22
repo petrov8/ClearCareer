@@ -149,7 +149,7 @@ At runtime, the following error may appear:
 
 
   <p align="center">
-    <img src=".Angular/src/assets/flask_error.png" width="280" height="200"alt="accessibility text">
+    <img src="Angular/src/assets/flask_error.png" width="280" height="200"alt="accessibility text">
   </p>
     
 
