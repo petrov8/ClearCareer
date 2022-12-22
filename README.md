@@ -30,7 +30,7 @@
 <h3 align="center">Careers Website</h3>
 
   <p align="center">
-    project_description
+    Your first stop for a new career !
     <br />
     <br />
     <br />
@@ -165,19 +165,18 @@ resolve the issue by navigating to "./services/kraken_io.py" and "ALT+left click
         from io import BytesIO as cStringIO
    ```
 
-  change from:
+                    change from:
 
   <p align="center">
     <img src="Angular/src/assets/flask_error_2.png" width="250" alt="accessibility text">
   </p>
 
-  to 
+                    change to:
 
   <p align="center">
     <img src="Angular/src/assets/flask_error_3.png" width="250" alt="accessibility text">
   </p>
 
-    ![Alt text](assets/flask_error_3.png)
 
 
 3. Re-run "main.py"
