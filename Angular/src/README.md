@@ -165,7 +165,7 @@ resolve the issue by navigating to "./services/kraken_io.py" and "ALT+left click
 
   change from:
 
-    ![Alt text](assets/flask_error_2.png)
+    <img src="https://github.com/petrov8/CareersWebsite/blob/main/Angular/src/assets/flask_error_2.png">
 
   to 
 
