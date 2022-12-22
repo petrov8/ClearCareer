@@ -30,14 +30,8 @@
 <h3 align="center">Careers Website</h3>
 
   <p align="center">
-    Your first stop for a new career !
+    Your fast track to a new career !
     <br />
-    <br />
-    <br />
-    ·
-    <a href="https://github.com/petrov8/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/petrov8/issues">Request Feature</a>
   </p>
 </div>
 
@@ -165,13 +159,13 @@ resolve the issue by navigating to "./services/kraken_io.py" and "ALT+left click
         from io import BytesIO as cStringIO
    ```
 
-                    change from:
+    before edit:
 
   <p align="center">
     <img src="Angular/src/assets/flask_error_2.png" width="250" alt="accessibility text">
   </p>
 
-                    change to:
+    after edit:
 
   <p align="center">
     <img src="Angular/src/assets/flask_error_3.png" width="250" alt="accessibility text">
