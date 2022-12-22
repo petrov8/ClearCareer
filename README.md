@@ -24,7 +24,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/petrov8/CareersWebsite">
-    ![Alt text](assets/logo.jpg)
+    <img src=".Angular/src/assets/logo.jpg" width="280" height="200"alt="accessibility text">
   </a>
 
 <h3 align="center">Careers Website</h3>
@@ -148,7 +148,9 @@ In case Angular fails to install automatically, run the following command:
 At runtime, the following error may appear: 
 
 
-  ![Alt text](assets/flask_error.png)
+  <p align="center">
+    <img src=".Angular/src/assets/flask_error.png" width="280" height="200"alt="accessibility text">
+  </p>
     
 
 
@@ -165,13 +167,14 @@ resolve the issue by navigating to "./services/kraken_io.py" and "ALT+left click
 
   change from:
 
-    <img src="https://github.com/petrov8/CareersWebsite/blob/main/Angular/src/assets/flask_error_2.png">
+  <p align="center">
+    <img src=".Angular/src/assets/flask_error_2.png" width="280" height="200"alt="accessibility text">
+  </p>
 
   to 
 
   <p align="center">
-    <img src="./assets/flask_error_2.png" width="350" alt="accessibility text">
-
+    <img src=".Angular/src/assets/flask_error_3.png" width="280" height="200"alt="accessibility text">
   </p>
 
     ![Alt text](assets/flask_error_3.png)
