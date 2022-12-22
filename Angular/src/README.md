@@ -24,7 +24,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/petrov8/CareersWebsite">
-    <img src="![Alt text](Angular/src/assets/logo.jpg)" alt="Logo" width="80" height="80">
+    ![Alt text](assets/logo.jpg)
   </a>
 
 <h3 align="center">Careers Website</h3>
@@ -169,7 +169,7 @@ resolve the issue by navigating to "./services/kraken_io.py" and "ALT+left click
 
   to 
 
-    ![Alt text](flask_error_3.png)
+    ![Alt text](assets/flask_error_3.png)
 
 
 3. Re-run "main.py"
