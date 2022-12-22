@@ -22,7 +22,7 @@ class KrakenIoService:
         try:
             return result["kraked_url"]
         except Exception:
-            raise InternalServerError("Image resizing failed.")
+            raise InternalServerError("Image resizing failed - kraken.io")
 
     @staticmethod
     def job_dimensions():
