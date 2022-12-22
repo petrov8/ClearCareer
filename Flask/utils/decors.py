@@ -39,9 +39,11 @@ def check_ownership_decorator(original_func):
     def extended_function(job_id, *args):
         offer = return_current_job(job_id)
         user = return_current_user()
-        if not (user.role == UserTypes.admin or user.id == offer.recruiter_id):
-            raise Forbidden("No edit rights.")
-        return original_func(offer, *args)
+        print(user.role.value)
+        print(UserTypes.admin.value)
+        if user.role.value == UserTypes.admin.value or user.email == offer.recruiter_email:
+            return original_func(offer, *args)
+        raise Forbidden("No edit rights.")
     return extended_function
 
 
