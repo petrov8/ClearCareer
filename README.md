@@ -24,7 +24,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/petrov8/CareersWebsite">
-    <img src="Angular/src/assets/logo.jpg" width="168" height="168"alt="accessibility text">
+    <img src="Angular/src/assets/logo.jpg" width="240" height="200"alt="accessibility text">
   </a>
 
 <h3 align="center">Careers Website</h3>
@@ -168,13 +168,13 @@ resolve the issue by navigating to "./services/kraken_io.py" and "ALT+left click
   change from:
 
   <p align="center">
-    <img src="Angular/src/assets/flask_error_2.png" width="350" alt="accessibility text">
+    <img src="Angular/src/assets/flask_error_2.png" width="250" alt="accessibility text">
   </p>
 
   to 
 
   <p align="center">
-    <img src="Angular/src/assets/flask_error_3.png" width="350" alt="accessibility text">
+    <img src="Angular/src/assets/flask_error_3.png" width="250" alt="accessibility text">
   </p>
 
     ![Alt text](assets/flask_error_3.png)
