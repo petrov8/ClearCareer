@@ -169,6 +169,11 @@ resolve the issue by navigating to "./services/kraken_io.py" and "ALT+left click
 
   to 
 
+  <p align="center">
+    <img src="./assets/flask_error_2.png" width="350" alt="accessibility text">
+    <img src="/assets/flask_error_2.png" width="350" alt="accessibility text">
+  </p>
+
     ![Alt text](assets/flask_error_3.png)
 
 
