@@ -24,7 +24,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/petrov8/CareersWebsite">
-    <img src=![Alt text](src/assets/logo.jpg)" alt="Logo" width="80" height="80">
+    <img src="![Alt text](Angular/src/assets/logo.jpg)" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Careers Website</h3>
@@ -149,8 +149,8 @@ At runtime, the following error may appear:
 
 <br>
 
-
-    ![Error Message](src/assets/flask_error.png)
+      ![Alt text](Angular/src/assets/flask_error.png)
+    
 
 <br>
 
@@ -164,13 +164,14 @@ resolve the issue by navigating to "./services/kraken_io.py" and "ALT+left click
     except ImportError:
         from io import BytesIO as cStringIO
    ```
-from:
+   
+  change from:
 
-    ![Problem Root](src/assets/flask_error_2.png)
+      ![Alt text](Angular/src/assets/flask_error_2.png)
 
-to 
+  to 
 
-    ![Solution](src/assets/flask_error_3.png)
+      ![Alt text](Angular/src/assets/flask_error_3.png)
 
 
 3. Re-run "main.py"
