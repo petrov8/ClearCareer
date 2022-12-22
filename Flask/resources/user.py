@@ -18,7 +18,7 @@ class RegisterUserResource(Resource):
             "token": token,
             "_id": user_id,
             "_role": user_role,
-            "email": user_email
+            "_email": user_email
         }, status.HTTP_201_CREATED
 
 
