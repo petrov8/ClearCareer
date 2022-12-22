@@ -26,8 +26,9 @@ button:hover, a:hover {
 }
 
 .details-img {
-  width: 70%;
-  height: 80%;
+  width: 40%;
+  height: 40%;
+
 }
 
 #action-buttons {

@@ -32,8 +32,11 @@ export class EditComponent implements OnInit {
   base64: any
 
 
-  constructor(private fb: FormBuilder, private router:Router, private jobApi: JobsApiService, public currentJob: JobExistingModel) {
-
+  constructor(
+    private fb: FormBuilder, 
+    private router:Router, 
+    private jobApi: JobsApiService, 
+    public currentJob: JobExistingModel) {
   }
 
   form = this.fb.group({

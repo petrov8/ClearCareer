@@ -1,3 +1,4 @@
+import { AuthguardGuard } from './support/guards/authguard.guard';
 
 import { SharedModule } from './shared/shared.module';
 import { AlertifyService } from '../services/alertify-service'
@@ -53,7 +54,11 @@ import { LoadingSpinnerInteceptor } from 'src/Interceptors/http-spinner.intercep
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  
+  bootstrap: [
+    AppComponent, 
+    AuthguardGuard,
+  ]
 })
 
 export class AppModule { }

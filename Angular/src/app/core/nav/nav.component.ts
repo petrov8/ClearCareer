@@ -1,5 +1,5 @@
 
-import { NavBarService } from '../../../services/nav-bar-dynamic.service';
+import { UserStatusService } from '../../../services/user-status.service';
 import { AuthService } from '../../auth/auth.api.service';
 import { Component, Injectable } from '@angular/core';
 import { urlPaths } from './../../support/url.paths';
@@ -16,7 +16,7 @@ export class NavComponent {
   paths = urlPaths
 
 
-  constructor (public authService: AuthService, private nav: NavBarService) {}
+  constructor (public authService: AuthService, private nav: UserStatusService) {}
 
   get showNewJob(){
     return this.nav.canEditPosts()

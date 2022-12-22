@@ -1,6 +1,7 @@
+import { AuthguardGuard } from './../support/guards/authguard.guard';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main/main.component';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 
 
 
@@ -13,7 +14,8 @@ const coreRoutes: Routes = [
     },
     {
         path: "dashboard",
-        component: MainComponent
+        component: MainComponent,
+        canActivate: [AuthguardGuard]
     },
 
 
