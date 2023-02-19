@@ -27,7 +27,7 @@
     <img src="Angular/src/assets/ClearCareer.jpg" width="225" height="225" alt="accessibility text">
   </a>
 
-<h3 align="center">Careers Website</h3>
+<h3 align="center">Clear Career</h3>
 
   <p align="center">
     Your fast track to a new career !
