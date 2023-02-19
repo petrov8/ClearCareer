@@ -24,7 +24,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/petrov8/CareersWebsite">
-    <img src="Angular/src/assets/logo.jpg" width="240" height="200"alt="accessibility text">
+    <img src="Angular/src/assets/ClearCareer.jpg" width="225" height="225" alt="accessibility text">
   </a>
 
 <h3 align="center">Careers Website</h3>
@@ -66,21 +66,39 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is an online exchange where recruiters can publish and manage job advertisements.
-
-Job seekers can browse through available offers, review details and apply (to be implemented). 
-
-The recruitment process is overseen by administrators.
+This app is a condensed version of a recruitment platform, and it features job-seekers, recruiters or administrators. 
+Registered and authenticated users can upgrade their profile information and change their profile pictures. 
+Job-seekers can view job postings and apply for them, whereas recruiters can publish/edit/delete new job offers. 
+Additional checks ensure recruiters can only interact with their own posts. 
+Job-seekers and recruiters can view all offers associated to their accounts via a ‘private’ catalogue page. 
+Administrators oversee the entire process and can edit or delete job
+offers, as well as apply the same actions to other users’ profiles. To ensure maximum storage capacity,
+pictures (profile or job-offers) are resized via an external service prior to being stored in the cloud.
+Furthermore, the back-end automatically differentiates between profile and job offer photos, and
+applies different resizing. The app features authorization and authentication checks, as well as global
+handlers for processing and displaying error messages or loading spinners. The back-end is fully unit-tested
+with ‘mocks’ used to test 3rd party services.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+### Features:
 
-### Built With
+* Unit Tests.
+* SPA + REST API architecture.
+* 3rd party API services.
+* Image resizing depending on image use-case.
+* User IDs incorporated in auth. token.
+* Authorization decorators. 
+* Async HTTP requests.
+* Global Error Handlers.
+
+
+### Built With:
 
 * Client Side - Angular https://angular.io
-* Server Side - Flask https://flask.palletsprojects.com/en/2.2.x/
+* Server Side - Flask https://flask.palletsprojects.com/en/2.2.x/ 
 
 
 ### Services:
@@ -250,9 +268,9 @@ Features:
 
 - [1] Delete Profile - Users or Admins can delete profiles (currently not available on server side)
     - [1.1] - Terminate Profile - Administrators have permissions to delete user/recruiter profiles. 
-- [2] Apply for jobs - Logged in job seekers can apply for jobs. 
-- [3] My Jobs - populates a dashboard of all jobs a job seekers has applied for. 
-- [4] Application Count - Recruiters can see total applications for a each of their published jobs.
+- [2] Apply for jobs - Logged in job-seekers can apply for jobs. 
+- [3] My Jobs - populates a dashboard of all jobs a job-seekers has applied for. 
+- [4] Application Count - Recruiters can see total applications for each of their published jobs.
 - [5] Applicant Details - Recruiters can see applicant profiles. 
 
 
